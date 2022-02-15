@@ -1,6 +1,8 @@
 package com.initbase.nytarticles.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 
 data class NYTResponse(
@@ -9,11 +11,11 @@ data class NYTResponse(
     @SerializedName("num_results")
     val numResults: Long,
 
-    val results: List<Result>
+    val results: List<Article>
 )
 
-
-data class Result(
+@Parcelize
+data class Article(
     val uri: String,
     val url: String,
     val id: Long,
@@ -54,9 +56,9 @@ data class Result(
 
     @SerializedName("eta_id")
     val etaID: Long
-)
+):Parcelable
 
-
+@Parcelize
 data class Media(
     val type: String,
     val subtype: String,
@@ -68,11 +70,11 @@ data class Media(
 
     @SerializedName("media-metadata")
     val mediaMetadata: List<MediaMetadatum>
-)
+):Parcelable
 
-
+@Parcelize
 data class MediaMetadatum(
     val url: String,
     val height: Long,
     val width: Long
-)
+):Parcelable
